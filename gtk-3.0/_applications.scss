@@ -88,13 +88,6 @@ NautilusCanvasViewContainer.view .entry { border-radius: 3px; }
   &:selected { color: $selected_fg_color; }
 }
 
-.nautilus-canvas-item.dim-label,
-.nautilus-list-dim-label {
-  color: mix($fg_color, $bg_color, 50%);
-
-  &:selected, &:selected:focus { color: mix($selected_fg_color, $selected_bg_color, 80%); }
-}
-
 NautilusNotebook.notebook {
   background-color: $base_color;
 
@@ -106,37 +99,15 @@ NautilusNotebook.notebook {
   }
 }
 
+//NautilusNotebook.notebook {
+//  background-color: $base_color;
+//}
+
 NautilusQueryEditor .search-bar.toolbar {
   padding: 5px;
   box-shadow: none;
 }
 
-.nautilus-circular-button {
-  border-radius: 50%;
-  outline-radius: 50%;
-}
-
-$disk_space_unknown: transparentize($fg_color, 0.5);
-$disk_space_used: transparentize($selected_bg_color, 0.2);
-$disk_space_free: darken($bg_color, 3%);
-
-.disk-space-display {
-  border-style: solid;
-  border-width: 1px;
-
-  &.unknown {
-    background-color: $disk_space_unknown;
-    border-color: darken($disk_space_unknown, 10%);
-  }
-  &.used {
-    background-color: $disk_space_used;
-    border-color: darken($disk_space_used, 10%);
-  }
-  &.free {
-    background-color: $disk_space_free;
-    border-color: darken($disk_space_free, 10%);
-  }
-}
 
 //
 // Nemo
@@ -169,31 +140,12 @@ NemoPathBar.linked > .button {
 //
 .gedit-headerbar-paned { color: darken($header_bg, 7%); }
 
-.open-document-selector-treeview.view {
-  padding: 3px 6px 3px 6px;
-  border-color: $base_color;  // disable borders, making them transparent doesn't work for some reason
+.open-document-selector-listbox-row {
+  border-bottom: 1px solid darken($bg_color, 5%);
+  padding: 6px 6px 6px 12px;
 
-  &:prelight {
-    background-color: transparentize(black, 0.95);
-
-    &:selected {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-  }
-}
-
-/* Only normal state is handle */
-.open-document-selector-name-label {
-  color: $fg_color;
-}
-
-/* Only normal state is handle */
-.open-document-selector-path-label {
-    color: mix($fg_color, $base_color, 50%);
-    font-size: smaller;
-
-    &:selected { color: transparentize($selected_fg_color, 0.1); }
+  .path-label { font-size: smaller; color: transparentize($fg_color, 0.3); }
+  &:selected .path-label { color: transparentize($selected_fg_color, 0.3); }
 }
 
 .gedit-document-panel {

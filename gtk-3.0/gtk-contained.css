@@ -63,9 +63,9 @@
 .view {
   color: #5c616c;
   background-color: #ffffff; }
-  .view.dim-label, .view.label.separator, GtkPlacesSidebar.sidebar .view.label.separator, .header-bar .view.subtitle {
+  .view.dim-label, GtkLabel.view.separator, GtkPlacesSidebar.sidebar GtkLabel.view.separator, .header-bar .view.subtitle {
     color: rgba(92, 97, 108, 0.55); }
-    .view.dim-label:selected, .view.label.separator:selected, .header-bar .view.subtitle:selected, .view.dim-label:selected:focus, .view.label.separator:selected:focus, .header-bar .view.subtitle:selected:focus {
+    .view.dim-label:selected, GtkLabel.view.separator:selected, .header-bar .view.subtitle:selected, .view.dim-label:selected:focus, GtkLabel.view.separator:selected:focus, .header-bar .view.subtitle:selected:focus {
       color: rgba(255, 255, 255, 0.65);
       text-shadow: none; }
 
@@ -73,12 +73,12 @@
   border: 1px solid #5294E2;
   background-color: rgba(82, 148, 226, 0.2); }
 
-.label.separator, .popover .label.separator, GtkPlacesSidebar.sidebar .label.view.separator {
+GtkLabel.separator, .popover GtkLabel.separator, GtkPlacesSidebar.sidebar GtkLabel.view.separator {
   color: #5c616c; }
-.label:insensitive {
+GtkLabel:insensitive {
   color: rgba(92, 97, 108, 0.55); }
 
-.dim-label, .label.separator, .popover .label.separator, GtkPlacesSidebar.sidebar .label.view.separator, .header-bar .subtitle {
+.dim-label, GtkLabel.separator, .popover GtkLabel.separator, GtkPlacesSidebar.sidebar GtkLabel.view.separator, .header-bar .subtitle {
   opacity: 0.55; }
 
 GtkAssistant .sidebar {
@@ -90,19 +90,19 @@ GtkAssistant .sidebar {
     border-left: 1px solid #dde3e9; }
 GtkAssistant.csd .sidebar {
   border-top-style: none; }
-GtkAssistant .sidebar .label {
+GtkAssistant .sidebar GtkLabel {
   padding: 6px 12px; }
-GtkAssistant .sidebar .label.highlight {
+GtkAssistant .sidebar GtkLabel.highlight {
   background-color: #5294E2;
   color: #ffffff; }
 
 GtkTextView {
   background-color: #fcfcfd; }
 
-.grid-child {
+GtkFlowBox .grid-child {
   padding: 3px;
   border-radius: 3px; }
-  .grid-child:selected {
+  GtkFlowBox .grid-child:selected {
     outline-offset: -2px; }
 
 .popover.osd, .osd {
@@ -456,16 +456,16 @@ GtkTextView {
       padding: 6px 10px; }
     .stack-switcher > .button.image-button {
       padding: 1px 3px; }
-    .stack-switcher > .button.needs-attention:active > .label, .stack-switcher > .button.needs-attention:active > GtkImage, .stack-switcher > .button.needs-attention:checked > .label, .stack-switcher > .button.needs-attention:checked > GtkImage {
+    .stack-switcher > .button.needs-attention:active > GtkLabel, .stack-switcher > .button.needs-attention:active > GtkImage, .stack-switcher > .button.needs-attention:checked > GtkLabel, .stack-switcher > .button.needs-attention:checked > GtkImage {
       animation: none;
       background-image: none; }
-  .stack-switcher > .button.needs-attention > .label, .stack-switcher > .button.needs-attention > GtkImage, .button .sidebar-item.needs-attention > GtkLabel {
+  .stack-switcher > .button.needs-attention > GtkLabel, .stack-switcher > .button.needs-attention > GtkImage, .button .sidebar-item.needs-attention > GtkLabel {
     animation: needs_attention 150ms ease-in;
     background-image: -gtk-gradient(radial, center center, 0, center center, 0.5, to(#5294E2), to(transparent));
     background-size: 6px 6px, 6px 6px;
     background-repeat: no-repeat;
     background-position: right 3px, right 4px; }
-    .stack-switcher > .button.needs-attention > .label:dir(rtl), .stack-switcher > .button.needs-attention > GtkImage:dir(rtl), .button .sidebar-item.needs-attention > GtkLabel:dir(rtl) {
+    .stack-switcher > .button.needs-attention > GtkLabel:dir(rtl), .stack-switcher > .button.needs-attention > GtkImage:dir(rtl), .button .sidebar-item.needs-attention > GtkLabel:dir(rtl) {
       background-position: left 3px, left 4px; }
   .inline-toolbar .button, .inline-toolbar .button:backdrop {
     border-radius: 2px;
@@ -842,13 +842,6 @@ GtkComboBox {
     background-color: #e7e8eb; }
     .maximized .header-bar:backdrop {
       background-color: #eff0f2; }
-  .header-bar.default-decoration {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #e7e8eb;
-    border-bottom-width: 0; }
-    .header-bar.default-decoration:backdrop {
-      background-color: #eff0f2; }
 
 .titlebar {
   padding-left: 7px;
@@ -1061,16 +1054,7 @@ GtkTreeView.view {
   -GtkTreeView-tree-line-width: 1;
   -GtkTreeView-tree-line-pattern: '';
   -GtkTreeView-expander-size: 16;
-  border-left-color: rgba(92, 97, 108, 0.15);
-  border-top-color: rgba(0, 0, 0, 0.1); }
-  GtkTreeView.view:selected {
-    border-radius: 0;
-    border-left-color: #a8c9f0;
-    border-top-color: rgba(92, 97, 108, 0.1); }
-  GtkTreeView.view:insensitive {
-    color: rgba(92, 97, 108, 0.55); }
-    GtkTreeView.view:insensitive:selected {
-      color: #97beed; }
+  border-color: rgba(92, 97, 108, 0.2); }
   GtkTreeView.view.dnd {
     border-style: solid none;
     border-width: 1px;
@@ -1198,6 +1182,7 @@ column-header .button, column-header .button:hover, column-header .button:active
  * Popovers *
  ************/
 .popover {
+  margin: 10px;
   padding: 2px;
   border: 1px solid #ced6de;
   border-radius: 3px;
@@ -1371,80 +1356,38 @@ column-header .button, column-header .button:hover, column-header .button:active
  * Scrollbars *
  **************/
 .scrollbar {
-  -GtkRange-slider-width: 13;
-  -GtkRange-trough-border: 1;
+  background-clip: padding-box;
+  background-image: none;
+  border-style: solid;
+  -GtkRange-trough-border: 0;
   -GtkScrollbar-has-backward-stepper: false;
   -GtkScrollbar-has-forward-stepper: false;
+  -GtkRange-slider-width: 11;
   -GtkScrollbar-min-slider-length: 42;
   -GtkRange-stepper-spacing: 0;
   -GtkRange-trough-under-steppers: 1; }
   .scrollbar .button {
     border: none; }
-  .scrollbar.overlay-indicator:not(.dragging):not(.hovering) {
-    opacity: 0.4;
-    -GtkRange-slider-width: 6px; }
-    .scrollbar.overlay-indicator:not(.dragging):not(.hovering) .slider {
-      margin: 0;
-      background-color: #8b8e96;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      background-clip: padding-box; }
-    .scrollbar.overlay-indicator:not(.dragging):not(.hovering) .trough {
-      border-style: none;
-      background-color: transparent; }
-    .scrollbar.overlay-indicator:not(.dragging):not(.hovering).vertical .slider {
-      margin-top: 2px;
-      margin-bottom: 2px; }
-    .scrollbar.overlay-indicator:not(.dragging):not(.hovering).horizontal .slider {
-      margin-left: 2px;
-      margin-right: 2px; }
-  .scrollbar.overlay-indicator.dragging, .scrollbar.overlay-indicator.hovering {
-    opacity: 0.99; }
-  .scrollbar .trough {
-    background-color: #fcfcfc;
-    border: 1px none #dde3e9; }
-  .scrollbar .slider {
-    background-color: #babcc1; }
-    .scrollbar .slider:hover {
-      background-color: #c9ccd0; }
-    .scrollbar .slider:prelight:active {
+  .scrollbar.slider {
+    border-radius: 20px;
+    border: 3px solid transparent;
+    background-color: #9a9ea5; }
+    .scrollbar.slider:hover {
+      background-color: #8b8e96; }
+    .scrollbar.slider:prelight:active {
       background-color: #5294E2; }
-    .scrollbar .slider:insensitive {
+    .scrollbar.slider.fine-tune {
+      border-width: 4px; }
+      .scrollbar.slider.fine-tune:prelight:active {
+        background-color: #5294E2; }
+    .scrollbar.slider:insensitive {
       background-color: transparent; }
-  .scrollbar .slider {
-    border-radius: 100px;
-    margin: 3px; }
-  .scrollbar.fine-tune .slider {
-    margin: 4px; }
-  .scrollbar.vertical .slider {
-    margin-left: 4px; }
-    .scrollbar.vertical .slider:dir(rtl) {
-      margin-left: 3px;
-      margin-right: 4px; }
-  .scrollbar.vertical.fine-tune .slider {
-    margin-left: 5px; }
-    .scrollbar.vertical.fine-tune .slider:dir(rtl) {
-      margin-left: 4px;
-      margin-right: 5px; }
-  .scrollbar.vertical .trough {
-    border-left-style: solid; }
-    .scrollbar.vertical .trough:dir(rtl) {
-      border-left-style: none;
-      border-right-style: solid; }
-  .scrollbar.horizontal .slider {
-    margin-top: 4px; }
-  .scrollbar.horizontal.fine-tune .slider {
-    margin-top: 5px; }
-  .scrollbar.horizontal .trough {
-    border-top-style: solid; }
 
-.scrollbars-junction,
-.scrollbars-junction.frame {
+.scrollbars-junction, .scrollbar.trough,
+.scrollbars-junction.frame,
+.frame.scrollbar.trough {
   border-color: transparent;
-  border-image: linear-gradient(to bottom, #dde3e9 1px, transparent 1px) 0 0 0 1/0 1px stretch;
-  background-color: #fcfcfc; }
-  .scrollbars-junction:dir(rtl),
-  .scrollbars-junction.frame:dir(rtl) {
-    border-image-slice: 0 1 0 0; }
+  background-color: #ffffff; }
 
 /**********
  * Switch *
@@ -1788,7 +1731,7 @@ GtkScrolledWindow GtkViewport.frame {
   .list-row.button:selected:insensitive {
     color: rgba(255, 255, 255, 0.7);
     background-color: rgba(82, 148, 226, 0.7); }
-    .list-row.button:selected:insensitive .label {
+    .list-row.button:selected:insensitive GtkLabel {
       color: inherit; }
 
 .list-row, list-row.button {
@@ -1812,13 +1755,13 @@ GtkScrolledWindow GtkViewport.frame {
 /*************
  * Expanders *
  *************/
-.expander {
+GtkExpander {
   -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
-  .expander:dir(rtl) {
+  GtkExpander:dir(rtl) {
     -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl"); }
-  .expander:hover {
+  GtkExpander:hover {
     color: #aaaeb7; }
-  .expander:checked {
+  GtkExpander:checked {
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic"); }
 
 /************
@@ -1889,6 +1832,10 @@ GtkFileChooserDialog .dialog-action-box {
 .sidebar {
   border: none;
   background-color: #f9fafb; }
+  .sidebar .scrollbar.trough {
+    background-color: transparent;
+    border-width: 2px;
+    border-color: transparent; }
   .sidebar:selected {
     background-color: #5294E2; }
 
@@ -1908,25 +1855,13 @@ GtkPlacesSidebar.sidebar .view {
     background-size: 6px 6px, 0 0; }
 
 GtkPaned {
-  -GtkPaned-handle-size: 1;
-  -gtk-icon-source: none;
   margin: 0 8px 8px 0; }
   GtkPaned:dir(rtl) {
     margin-right: 0;
     margin-left: 8px; }
-  GtkPaned .pane-separator {
-    background-color: #dde3e9; }
 
-GtkPaned.wide {
-  -GtkPaned-handle-size: 5;
-  margin: 0; }
-  GtkPaned.wide .pane-separator {
-    background-color: transparent;
-    border-style: none solid;
-    border-color: #dde3e9;
-    border-width: 1px; }
-  GtkPaned.wide.vertical .pane-separator {
-    border-style: solid none; }
+.pane-separator {
+  background-image: linear-gradient(to bottom, #dde3e9); }
 
 /**************
  * GtkInfoBar *
@@ -1991,56 +1926,48 @@ GtkInfoBar {
 /*****************
  * Color Chooser *
  *****************/
-:selected GtkColorSwatch {
+GtkColorSwatch {
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4); }
+  GtkColorSwatch.color-light:hover {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4)); }
+  GtkColorSwatch.color-dark:hover {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2)); }
+  GtkColorSwatch:hover {
+    border-color: rgba(0, 0, 0, 0.5); }
+  GtkColorSwatch.top {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
+  GtkColorSwatch.bottom {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  GtkColorSwatch.left, GtkColorSwatch:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  GtkColorSwatch.right, GtkColorSwatch:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  GtkColorSwatch:only-child {
+    border-radius: 3px; }
+  GtkColorSwatch.color-active-badge {
+    border-width: 2px; }
+    GtkColorSwatch.color-active-badge:hover {
+      background-image: none; }
+    GtkColorSwatch.color-active-badge.color-light, GtkColorSwatch.color-active-badge.color-light:hover {
+      color: rgba(0, 0, 0, 0.3);
+      border-color: rgba(0, 0, 0, 0.3); }
+    GtkColorSwatch.color-active-badge.color-dark, GtkColorSwatch.color-active-badge.color-dark:hover {
+      color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.5); }
+
+GtkColorChooserWidget #add-color-button {
+  border-color: #ebeef2;
+  background-color: #ebeef2;
+  color: #f9fafb;
   box-shadow: none; }
-  :selected GtkColorSwatch.overlay, :selected GtkColorSwatch.overlay:hover {
-    border-color: #ffffff; }
-GtkColorSwatch.top {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px; }
-GtkColorSwatch.bottom {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px; }
-GtkColorSwatch.left, GtkColorSwatch:first-child, GtkColorSwatch:first-child .overlay {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
-GtkColorSwatch.right, GtkColorSwatch:last-child, GtkColorSwatch:last-child .overlay {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px; }
-GtkColorSwatch:only-child, GtkColorSwatch:only-child .overlay {
-  border-radius: 3px; }
-GtkColorSwatch:hover, GtkColorSwatch:hover:selected {
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2)); }
-GtkColorEditor GtkColorSwatch {
-  border-radius: 3px; }
-  GtkColorEditor GtkColorSwatch:hover {
-    background-image: none; }
-GtkColorSwatch.color-dark {
-  color: white;
-  outline-color: rgba(0, 0, 0, 0.3); }
-GtkColorSwatch.color-light {
-  color: black;
-  outline-color: rgba(255, 255, 255, 0.5); }
-GtkColorSwatch.overlay, GtkColorSwatch.overlay:selected {
-  border: 1px solid rgba(0, 0, 0, 0.15); }
-  GtkColorSwatch.overlay:hover, GtkColorSwatch.overlay:selected:hover {
-    border-color: rgba(0, 0, 0, 0.25); }
-GtkColorSwatch#add-color-button {
-  border-style: solid;
-  border-width: 1px;
-  color: #5c616c;
-  outline-color: rgba(92, 97, 108, 0.3);
-  border-color: #cfd6e6;
-  background-color: #fcfdfd; }
-  GtkColorSwatch#add-color-button:hover {
-    color: #5c616c;
-    outline-color: rgba(92, 97, 108, 0.3);
-    border-color: #5294E2;
-    background-color: #fcfdfd; }
-  GtkColorSwatch#add-color-button .overlay {
-    border-color: transparent;
-    background-color: transparent;
-    background-image: none; }
+  GtkColorChooserWidget #add-color-button:hover {
+    border-color: #dde3e9;
+    background-color: #dde3e9; }
 
 GtkColorButton.button {
   padding: 4px; }
@@ -2074,11 +2001,6 @@ GtkVolumeButton.button {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 5px 2px rgba(0, 0, 0, 0.1); }
   .window-frame.tiled {
     border-radius: 0; }
-  .window-frame.ssd {
-    border-radius: 4px 4px 0 0;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1); }
-    .window-frame.ssd.maximized {
-      border-radius: 0; }
   .window-frame.csd.popup, .window-frame.csd.menu {
     border-radius: 3px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1); }
@@ -2088,87 +2010,254 @@ GtkVolumeButton.button {
   .window-frame.csd.message-dialog {
     border-radius: 3px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); }
-  .window-frame.solid-csd {
-    border-radius: 0;
-    margin: 1px;
-    background-color: rgba(231, 232, 235, 0.95);
-    box-shadow: none; }
 
-.header-bar.default-decoration .button.titlebutton,
-.titlebar.default-decoration .button.titlebutton {
-  padding-top: 0px;
-  padding-bottom: 0px; }
-.header-bar .button.titlebutton,
-.titlebar .button.titlebutton {
+.header-bar .button.titlebutton, .titlebar .button.titlebutton,
+.header-bar.selection-mode .button.titlebutton, .titlebar.selection-mode .button.titlebutton {
   padding: 7px 4px;
   border-color: transparent;
   background-color: transparent;
   background-image: none;
-  border-width: 0; }
-  .header-bar .button.titlebutton:hover,
-  .titlebar .button.titlebutton:hover {
-    color: rgba(82, 93, 118, 0.8);
-    outline-color: rgba(82, 93, 118, 0.1);
-    border-color: rgba(82, 93, 118, 0.1);
-    background-color: rgba(252, 253, 253, 0.9); }
-  .header-bar .button.titlebutton:active, .header-bar .button.titlebutton:checked,
-  .titlebar .button.titlebutton:active,
-  .titlebar .button.titlebutton:checked {
-    color: #ffffff;
-    outline-color: rgba(255, 255, 255, 0.3);
-    border-color: #5294E2;
-    background-color: #5294E2; }
-  .header-bar .button.titlebutton.close, .header-bar .button.titlebutton.maximize, .header-bar .button.titlebutton.minimize,
-  .titlebar .button.titlebutton.close,
-  .titlebar .button.titlebutton.maximize,
-  .titlebar .button.titlebutton.minimize {
-    color: transparent;
-    background-color: transparent;
-    background-position: center;
-    background-repeat: no-repeat; }
-    .header-bar .button.titlebutton.close:backdrop, .header-bar .button.titlebutton.maximize:backdrop, .header-bar .button.titlebutton.minimize:backdrop,
-    .titlebar .button.titlebutton.close:backdrop,
-    .titlebar .button.titlebutton.maximize:backdrop,
-    .titlebar .button.titlebutton.minimize:backdrop {
-      opacity: 1; }
-  .header-bar .button.titlebutton.close,
-  .titlebar .button.titlebutton.close {
-    background-image: -gtk-scaled(url("assets/titlebutton-close.png"), url("assets/titlebutton-close@2.png")); }
-  .header-bar .button.titlebutton.close:backdrop,
-  .titlebar .button.titlebutton.close:backdrop {
-    background-image: -gtk-scaled(url("assets/titlebutton-close-backdrop.png"), url("assets/titlebutton-close-backdrop@2.png")); }
-  .header-bar .button.titlebutton.close:hover,
-  .titlebar .button.titlebutton.close:hover {
-    background-image: -gtk-scaled(url("assets/titlebutton-close-hover.png"), url("assets/titlebutton-close-hover@2.png")); }
-  .header-bar .button.titlebutton.close:active,
-  .titlebar .button.titlebutton.close:active {
-    background-image: -gtk-scaled(url("assets/titlebutton-close-active.png"), url("assets/titlebutton-close-active@2.png")); }
-  .header-bar .button.titlebutton.maximize,
-  .titlebar .button.titlebutton.maximize {
-    background-image: -gtk-scaled(url("assets/titlebutton-max.png"), url("assets/titlebutton-max@2.png")); }
-  .header-bar .button.titlebutton.maximize:backdrop,
-  .titlebar .button.titlebutton.maximize:backdrop {
-    background-image: -gtk-scaled(url("assets/titlebutton-max-backdrop.png"), url("assets/titlebutton-max-backdrop@2.png")); }
-  .header-bar .button.titlebutton.maximize:hover,
-  .titlebar .button.titlebutton.maximize:hover {
-    background-image: -gtk-scaled(url("assets/titlebutton-max-hover.png"), url("assets/titlebutton-max-hover@2.png")); }
-  .header-bar .button.titlebutton.maximize:active,
-  .titlebar .button.titlebutton.maximize:active {
-    background-image: -gtk-scaled(url("assets/titlebutton-max-active.png"), url("assets/titlebutton-max-active@2.png")); }
-  .header-bar .button.titlebutton.minimize,
-  .titlebar .button.titlebutton.minimize {
-    background-image: -gtk-scaled(url("assets/titlebutton-min.png"), url("assets/titlebutton-min@2.png")); }
-  .header-bar .button.titlebutton.minimize:backdrop,
-  .titlebar .button.titlebutton.minimize:backdrop {
-    background-image: -gtk-scaled(url("assets/titlebutton-min-backdrop.png"), url("assets/titlebutton-min-backdrop@2.png")); }
-  .header-bar .button.titlebutton.minimize:hover,
-  .titlebar .button.titlebutton.minimize:hover {
+  border-width: 0;
+  color: transparent;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .header-bar .button.titlebutton:backdrop, .titlebar .button.titlebutton:backdrop,
+  .header-bar.selection-mode .button.titlebutton:backdrop, .titlebar.selection-mode .button.titlebutton:backdrop {
+    opacity: 1; }
+.header-bar .right .button.titlebutton:nth-last-child(3),
+.header-bar .right:dir(rtl) .button.titlebutton:nth-child(3),
+.header-bar .left .button.titlebutton:nth-child(3),
+.header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(3), .titlebar .right .button.titlebutton:nth-last-child(3),
+.titlebar .right:dir(rtl) .button.titlebutton:nth-child(3),
+.titlebar .left .button.titlebutton:nth-child(3),
+.titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(3),
+.header-bar.selection-mode .right .button.titlebutton:nth-last-child(3),
+.header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3),
+.header-bar.selection-mode .left .button.titlebutton:nth-child(3),
+.header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3), .titlebar.selection-mode .right .button.titlebutton:nth-last-child(3),
+.titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3),
+.titlebar.selection-mode .left .button.titlebutton:nth-child(3),
+.titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3) {
+  background-image: -gtk-scaled(url("assets/titlebutton-min.png"), url("assets/titlebutton-min@2.png")); }
+  .header-bar .right .button.titlebutton:nth-last-child(3):hover, .header-bar .right .button.titlebutton:nth-last-child(3):backdrop:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(3):hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop:hover,
+  .header-bar .left .button.titlebutton:nth-child(3):hover,
+  .header-bar .left .button.titlebutton:nth-child(3):backdrop:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(3):hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop:hover, .titlebar .right .button.titlebutton:nth-last-child(3):hover, .titlebar .right .button.titlebutton:nth-last-child(3):backdrop:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(3):hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop:hover,
+  .titlebar .left .button.titlebutton:nth-child(3):hover,
+  .titlebar .left .button.titlebutton:nth-child(3):backdrop:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(3):hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop:hover,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(3):hover,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(3):backdrop:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop:hover,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(3):hover,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(3):backdrop:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop:hover, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(3):hover, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(3):backdrop:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop:hover,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(3):hover,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(3):backdrop:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop:hover {
     background-image: -gtk-scaled(url("assets/titlebutton-min-hover.png"), url("assets/titlebutton-min-hover@2.png")); }
-  .header-bar .button.titlebutton.minimize:active,
-  .titlebar .button.titlebutton.minimize:active {
+  .header-bar .right .button.titlebutton:nth-last-child(3):active:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(3):active:hover,
+  .header-bar .left .button.titlebutton:nth-child(3):active:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(3):active:hover, .titlebar .right .button.titlebutton:nth-last-child(3):active:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(3):active:hover,
+  .titlebar .left .button.titlebutton:nth-child(3):active:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(3):active:hover,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(3):active:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):active:hover,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(3):active:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):active:hover, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(3):active:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):active:hover,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(3):active:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):active:hover {
     background-image: -gtk-scaled(url("assets/titlebutton-min-active.png"), url("assets/titlebutton-min-active@2.png")); }
+  .header-bar .right .button.titlebutton:nth-last-child(3):backdrop,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop,
+  .header-bar .left .button.titlebutton:nth-child(3):backdrop,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop, .titlebar .right .button.titlebutton:nth-last-child(3):backdrop,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop,
+  .titlebar .left .button.titlebutton:nth-child(3):backdrop,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(3):backdrop,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(3):backdrop,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(3):backdrop,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(3):backdrop,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(3):backdrop,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(3):backdrop {
+    background-image: -gtk-scaled(url("assets/titlebutton-min-backdrop.png"), url("assets/titlebutton-min-backdrop@2.png")); }
+.header-bar .right .button.titlebutton:nth-last-child(2),
+.header-bar .right:dir(rtl) .button.titlebutton:nth-child(2),
+.header-bar .left .button.titlebutton:nth-child(2),
+.header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(2), .titlebar .right .button.titlebutton:nth-last-child(2),
+.titlebar .right:dir(rtl) .button.titlebutton:nth-child(2),
+.titlebar .left .button.titlebutton:nth-child(2),
+.titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(2),
+.header-bar.selection-mode .right .button.titlebutton:nth-last-child(2),
+.header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2),
+.header-bar.selection-mode .left .button.titlebutton:nth-child(2),
+.header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2), .titlebar.selection-mode .right .button.titlebutton:nth-last-child(2),
+.titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2),
+.titlebar.selection-mode .left .button.titlebutton:nth-child(2),
+.titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2) {
+  background-image: -gtk-scaled(url("assets/titlebutton-max.png"), url("assets/titlebutton-max@2.png")); }
+  .header-bar .right .button.titlebutton:nth-last-child(2):hover, .header-bar .right .button.titlebutton:nth-last-child(2):backdrop:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(2):hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop:hover,
+  .header-bar .left .button.titlebutton:nth-child(2):hover,
+  .header-bar .left .button.titlebutton:nth-child(2):backdrop:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(2):hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop:hover, .titlebar .right .button.titlebutton:nth-last-child(2):hover, .titlebar .right .button.titlebutton:nth-last-child(2):backdrop:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(2):hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop:hover,
+  .titlebar .left .button.titlebutton:nth-child(2):hover,
+  .titlebar .left .button.titlebutton:nth-child(2):backdrop:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(2):hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop:hover,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(2):hover,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(2):backdrop:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop:hover,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(2):hover,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(2):backdrop:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop:hover, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(2):hover, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(2):backdrop:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop:hover,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(2):hover,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(2):backdrop:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop:hover {
+    background-image: -gtk-scaled(url("assets/titlebutton-max-hover.png"), url("assets/titlebutton-max-hover@2.png")); }
+  .header-bar .right .button.titlebutton:nth-last-child(2):active:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(2):active:hover,
+  .header-bar .left .button.titlebutton:nth-child(2):active:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(2):active:hover, .titlebar .right .button.titlebutton:nth-last-child(2):active:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(2):active:hover,
+  .titlebar .left .button.titlebutton:nth-child(2):active:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(2):active:hover,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(2):active:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):active:hover,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(2):active:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):active:hover, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(2):active:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):active:hover,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(2):active:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):active:hover {
+    background-image: -gtk-scaled(url("assets/titlebutton-max-active.png"), url("assets/titlebutton-max-active@2.png")); }
+  .header-bar .right .button.titlebutton:nth-last-child(2):backdrop,
+  .header-bar .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop,
+  .header-bar .left .button.titlebutton:nth-child(2):backdrop,
+  .header-bar .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop, .titlebar .right .button.titlebutton:nth-last-child(2):backdrop,
+  .titlebar .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop,
+  .titlebar .left .button.titlebutton:nth-child(2):backdrop,
+  .titlebar .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop,
+  .header-bar.selection-mode .right .button.titlebutton:nth-last-child(2):backdrop,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop,
+  .header-bar.selection-mode .left .button.titlebutton:nth-child(2):backdrop,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop, .titlebar.selection-mode .right .button.titlebutton:nth-last-child(2):backdrop,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:nth-child(2):backdrop,
+  .titlebar.selection-mode .left .button.titlebutton:nth-child(2):backdrop,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:nth-last-child(2):backdrop {
+    background-image: -gtk-scaled(url("assets/titlebutton-max-backdrop.png"), url("assets/titlebutton-max-backdrop@2.png")); }
+.header-bar .right .button.titlebutton:last-child,
+.header-bar .right:dir(rtl) .button.titlebutton:first-child,
+.header-bar .left .button.titlebutton:first-child,
+.header-bar .left:dir(rtl) .button.titlebutton:last-child, .titlebar .right .button.titlebutton:last-child,
+.titlebar .right:dir(rtl) .button.titlebutton:first-child,
+.titlebar .left .button.titlebutton:first-child,
+.titlebar .left:dir(rtl) .button.titlebutton:last-child,
+.header-bar.selection-mode .right .button.titlebutton:last-child,
+.header-bar.selection-mode .right:dir(rtl) .button.titlebutton:first-child,
+.header-bar.selection-mode .left .button.titlebutton:first-child,
+.header-bar.selection-mode .left:dir(rtl) .button.titlebutton:last-child, .titlebar.selection-mode .right .button.titlebutton:last-child,
+.titlebar.selection-mode .right:dir(rtl) .button.titlebutton:first-child,
+.titlebar.selection-mode .left .button.titlebutton:first-child,
+.titlebar.selection-mode .left:dir(rtl) .button.titlebutton:last-child {
+  background-image: -gtk-scaled(url("assets/titlebutton-close.png"), url("assets/titlebutton-close@2.png")); }
+  .header-bar .right .button.titlebutton:last-child:hover, .header-bar .right .button.titlebutton:last-child:backdrop:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:first-child:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:first-child:backdrop:hover,
+  .header-bar .left .button.titlebutton:first-child:hover,
+  .header-bar .left .button.titlebutton:first-child:backdrop:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:last-child:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:last-child:backdrop:hover, .titlebar .right .button.titlebutton:last-child:hover, .titlebar .right .button.titlebutton:last-child:backdrop:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:first-child:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:first-child:backdrop:hover,
+  .titlebar .left .button.titlebutton:first-child:hover,
+  .titlebar .left .button.titlebutton:first-child:backdrop:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:last-child:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:last-child:backdrop:hover,
+  .header-bar.selection-mode .right .button.titlebutton:last-child:hover,
+  .header-bar.selection-mode .right .button.titlebutton:last-child:backdrop:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:backdrop:hover,
+  .header-bar.selection-mode .left .button.titlebutton:first-child:hover,
+  .header-bar.selection-mode .left .button.titlebutton:first-child:backdrop:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:backdrop:hover, .titlebar.selection-mode .right .button.titlebutton:last-child:hover, .titlebar.selection-mode .right .button.titlebutton:last-child:backdrop:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:backdrop:hover,
+  .titlebar.selection-mode .left .button.titlebutton:first-child:hover,
+  .titlebar.selection-mode .left .button.titlebutton:first-child:backdrop:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:backdrop:hover {
+    background-image: -gtk-scaled(url("assets/titlebutton-close-hover.png"), url("assets/titlebutton-close-hover@2.png")); }
+  .header-bar .right .button.titlebutton:last-child:active:hover,
+  .header-bar .right:dir(rtl) .button.titlebutton:first-child:active:hover,
+  .header-bar .left .button.titlebutton:first-child:active:hover,
+  .header-bar .left:dir(rtl) .button.titlebutton:last-child:active:hover, .titlebar .right .button.titlebutton:last-child:active:hover,
+  .titlebar .right:dir(rtl) .button.titlebutton:first-child:active:hover,
+  .titlebar .left .button.titlebutton:first-child:active:hover,
+  .titlebar .left:dir(rtl) .button.titlebutton:last-child:active:hover,
+  .header-bar.selection-mode .right .button.titlebutton:last-child:active:hover,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:active:hover,
+  .header-bar.selection-mode .left .button.titlebutton:first-child:active:hover,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:active:hover, .titlebar.selection-mode .right .button.titlebutton:last-child:active:hover,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:active:hover,
+  .titlebar.selection-mode .left .button.titlebutton:first-child:active:hover,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:active:hover {
+    background-image: -gtk-scaled(url("assets/titlebutton-close-active.png"), url("assets/titlebutton-close-active@2.png")); }
+  .header-bar .right .button.titlebutton:last-child:backdrop,
+  .header-bar .right:dir(rtl) .button.titlebutton:first-child:backdrop,
+  .header-bar .left .button.titlebutton:first-child:backdrop,
+  .header-bar .left:dir(rtl) .button.titlebutton:last-child:backdrop, .titlebar .right .button.titlebutton:last-child:backdrop,
+  .titlebar .right:dir(rtl) .button.titlebutton:first-child:backdrop,
+  .titlebar .left .button.titlebutton:first-child:backdrop,
+  .titlebar .left:dir(rtl) .button.titlebutton:last-child:backdrop,
+  .header-bar.selection-mode .right .button.titlebutton:last-child:backdrop,
+  .header-bar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:backdrop,
+  .header-bar.selection-mode .left .button.titlebutton:first-child:backdrop,
+  .header-bar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:backdrop, .titlebar.selection-mode .right .button.titlebutton:last-child:backdrop,
+  .titlebar.selection-mode .right:dir(rtl) .button.titlebutton:first-child:backdrop,
+  .titlebar.selection-mode .left .button.titlebutton:first-child:backdrop,
+  .titlebar.selection-mode .left:dir(rtl) .button.titlebutton:last-child:backdrop {
+    background-image: -gtk-scaled(url("assets/titlebutton-close-backdrop.png"), url("assets/titlebutton-close-backdrop@2.png")); }
 
-.view:selected, .view:selected:focus, .view:selected:hover, .label:selected, .label:selected:focus, .label:selected:hover, .grid-child:selected, .menuitem.button.flat:selected, .menuitem.button.flat:checked, .menuitem.button.flat:active, .list-row:selected, GtkEntry.gb-command-bar-entry.entry.flat:selected, GtkEntry.gb-command-bar-entry.entry.flat:selected:focus {
+.header-bar .left GtkMenuButton.button.titlebutton:first-child,
+.header-bar .left:dir(rtl) GtkMenuButton.button.titlebutton:last-child,
+.header-bar.selection-mode .left GtkMenuButton.button.titlebutton:first-child,
+.header-bar.selection-mode .left:dir(rtl) GtkMenuButton.button.titlebutton:last-child,
+.titlebar .left GtkMenuButton.button.titlebutton:first-child,
+.titlebar .left:dir(rtl) GtkMenuButton.button.titlebutton:last-child,
+.titlebar.selection-mode .left GtkMenuButton.button.titlebutton:first-child,
+.titlebar.selection-mode .left:dir(rtl) GtkMenuButton.button.titlebutton:last-child {
+  padding: 4px 6px 4px 6px;
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none; }
+
+.view:selected, .view:selected:focus, .view:selected:hover, GtkLabel:selected, GtkLabel:selected:focus, GtkLabel:selected:hover, GtkFlowBox .grid-child:selected, .menuitem.button.flat:selected, .menuitem.button.flat:checked, .menuitem.button.flat:active, .list-row:selected, GtkEntry.gb-command-bar-entry.entry.flat:selected, GtkEntry.gb-command-bar-entry.entry.flat:selected:focus {
   background-image: none;
   background-color: #5294E2;
   color: #ffffff;
@@ -2291,14 +2380,6 @@ NautilusCanvasViewContainer.view .entry, NemoIconViewContainer .entry {
   .nautilus-desktop.nautilus-canvas-item:selected, .nemo-desktop.nemo-canvas-item:selected {
     color: #ffffff; }
 
-.nautilus-canvas-item.dim-label, .nautilus-canvas-item.label.separator, GtkPlacesSidebar.sidebar .nautilus-canvas-item.label.view.separator, .header-bar .nautilus-canvas-item.subtitle,
-.nautilus-list-dim-label {
-  color: #aaadb3; }
-  .nautilus-canvas-item.dim-label:selected, .nautilus-canvas-item.label.separator:selected, .header-bar .nautilus-canvas-item.subtitle:selected, .nautilus-canvas-item.dim-label:selected:focus, .nautilus-canvas-item.label.separator:selected:focus, .header-bar .nautilus-canvas-item.subtitle:selected:focus,
-  .nautilus-list-dim-label:selected,
-  .nautilus-list-dim-label:selected:focus {
-    color: #dce9f9; }
-
 NautilusNotebook.notebook {
   background-color: #ffffff; }
   NautilusNotebook.notebook tab {
@@ -2310,23 +2391,6 @@ NautilusNotebook.notebook {
 NautilusQueryEditor .search-bar.toolbar, NautilusQueryEditor .search-bar.inline-toolbar {
   padding: 5px;
   box-shadow: none; }
-
-.nautilus-circular-button {
-  border-radius: 50%;
-  outline-radius: 50%; }
-
-.disk-space-display {
-  border-style: solid;
-  border-width: 1px; }
-  .disk-space-display.unknown {
-    background-color: rgba(92, 97, 108, 0.5);
-    border-color: rgba(69, 72, 80, 0.5); }
-  .disk-space-display.used {
-    background-color: rgba(82, 148, 226, 0.8);
-    border-color: rgba(38, 121, 219, 0.8); }
-  .disk-space-display.free {
-    background-color: #f0f2f5;
-    border-color: #d1d9e0; }
 
 NemoWindow .sidebar .frame {
   border-width: 0; }
@@ -2350,25 +2414,14 @@ NemoPathBar.linked > .button {
 .gedit-headerbar-paned {
   color: rgba(212, 213, 219, 0.95); }
 
-.open-document-selector-treeview.view {
-  padding: 3px 6px 3px 6px;
-  border-color: #ffffff; }
-  .open-document-selector-treeview.view:prelight {
-    background-color: rgba(0, 0, 0, 0.05); }
-    .open-document-selector-treeview.view:prelight:selected {
-      color: #ffffff;
-      background-color: #5294E2; }
-
-/* Only normal state is handle */
-.open-document-selector-name-label {
-  color: #5c616c; }
-
-/* Only normal state is handle */
-.open-document-selector-path-label {
-  color: #adb0b5;
-  font-size: smaller; }
-  .open-document-selector-path-label:selected {
-    color: rgba(255, 255, 255, 0.9); }
+.open-document-selector-listbox-row {
+  border-bottom: 1px solid #eaedf1;
+  padding: 6px 6px 6px 12px; }
+  .open-document-selector-listbox-row .path-label {
+    font-size: smaller;
+    color: rgba(92, 97, 108, 0.7); }
+  .open-document-selector-listbox-row:selected .path-label {
+    color: rgba(255, 255, 255, 0.7); }
 
 .gedit-document-panel .list-row .button {
   color: transparent;
@@ -2501,7 +2554,7 @@ GbEditorWorkspace > GtkPaned > GtkBox > GtkBox.header.notebook {
 
 GbViewStack.focused GtkBox.header.notebook {
   background-color: #f9fafb; }
-  GbViewStack.focused GtkBox.header.notebook .button.dim-label, GbViewStack.focused GtkBox.header.notebook .button.label.separator, GbViewStack.focused GtkBox.header.notebook .header-bar .button.subtitle, .header-bar GbViewStack.focused GtkBox.header.notebook .button.subtitle {
+  GbViewStack.focused GtkBox.header.notebook .button.dim-label, GbViewStack.focused GtkBox.header.notebook GtkLabel.button.separator, GbViewStack.focused GtkBox.header.notebook .header-bar .button.subtitle, .header-bar GbViewStack.focused GtkBox.header.notebook .button.subtitle {
     opacity: 1; }
 
 EphyWindow .floating-bar {
@@ -2848,7 +2901,8 @@ GraniteWidgetsStaticNotebook .frame {
   background-color: #5294E2; }
 
 .source-list .scrollbar.trough,
-.source-list .scrollbars-junction {
+.source-list .scrollbars-junction,
+.source-list .scrollbar.trough {
   border-image: none;
   border-color: transparent;
   background-color: #f9fafb;
