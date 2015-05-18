@@ -1876,7 +1876,8 @@ GtkInfoBar {
 .info,
 .question,
 .warning,
-.error {
+.error,
+GtkInfoBar {
   background-color: #5294E2;
   color: #ffffff; }
 
@@ -2806,9 +2807,9 @@ UnityDecoration {
   -UnityDecoration-input-extents: 10px;
   -UnityDecoration-shadow-offset-x: 0px;
   -UnityDecoration-shadow-offset-y: 1px;
-  -UnityDecoration-active-shadow-color: rgba 0, 0, 0, 0.3;
-  -UnityDecoration-active-shadow-radius: 10px;
-  -UnityDecoration-inactive-shadow-color: rgba 0, 0, 0, 0.15;
+  -UnityDecoration-active-shadow-color: rgba 0, 0, 0, 0.1;
+  -UnityDecoration-active-shadow-radius: 8px;
+  -UnityDecoration-inactive-shadow-color: rgba 0, 0, 0, 0.1;
   -UnityDecoration-inactive-shadow-radius: 5px;
   -UnityDecoration-glow-size: 10px;
   -UnityDecoration-glow-color: #5294E2;
@@ -2833,7 +2834,7 @@ UnityDecoration {
 UnityPanelWidget,
 .unity-panel {
   background-image: linear-gradient(to bottom, #25272d);
-  color: #A8ADB5;
+  color: #dfe1e4;
   box-shadow: none; }
 
 .unity-panel.menubar.menuitem:hover,
