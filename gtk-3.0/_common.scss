@@ -1157,6 +1157,8 @@ GtkComboBox {
     &:focus {
       @include entry(header-focus);
       background-clip: border-box;
+
+      &.image { color: $selected_fg_color; }
     }
     &:insensitive { @include entry(header-insensitive); }
 
@@ -1707,7 +1709,7 @@ column-header.button.dnd { // for treeview-like derive widgets
   &.slider {
     border-radius: 20px;
     border: 3px solid transparent; //margin :/
-    background-color: mix($bg_color, $fg_color, 40%);
+    background-color: mix($bg_color, $fg_color, 60%);
     &:hover {
       background-color: mix($bg_color, $fg_color, 30%);
     }

@@ -873,6 +873,8 @@ GtkComboBox {
     border-color: #5294E2;
     background-image: linear-gradient(to bottom, #5294E2);
     background-clip: border-box; }
+    .primary-toolbar .entry:focus.image, .header-bar .entry:focus.image {
+      color: #ffffff; }
   .primary-toolbar .entry:insensitive, .header-bar .entry:insensitive {
     color: rgba(82, 93, 118, 0.35);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.55)); }
@@ -1369,7 +1371,7 @@ column-header .button, column-header .button:hover, column-header .button:active
   .scrollbar.slider {
     border-radius: 20px;
     border: 3px solid transparent;
-    background-color: #9a9ea5; }
+    background-color: #babcc1; }
     .scrollbar.slider:hover {
       background-color: #8b8e96; }
     .scrollbar.slider:prelight:active {
@@ -3026,25 +3028,29 @@ NautilusWindow .sidebar {
   NautilusWindow .sidebar .separator,
   NautilusWindow GtkPlacesSidebar.sidebar .view.separator {
     color: transparent; }
-  GtkFileChooserDialog .sidebar .scrollbar.overlay-indicator:not(.dragging):not(.hovering) .slider,
-  NautilusWindow .sidebar .scrollbar.overlay-indicator:not(.dragging):not(.hovering) .slider {
-    background-color: #d1d4d8;
-    border: 1px solid rgba(0, 0, 0, 0.3); }
-  GtkFileChooserDialog .sidebar .scrollbar .trough,
-  NautilusWindow .sidebar .scrollbar .trough {
-    background-color: rgba(0, 0, 0, 0.2);
-    border: none; }
-  GtkFileChooserDialog .sidebar .scrollbar .slider,
-  NautilusWindow .sidebar .scrollbar .slider {
+  GtkFileChooserDialog .sidebar .scrollbar.trough,
+  NautilusWindow .sidebar .scrollbar.trough {
+    background-color: transparent;
+    border-color: transparent; }
+  GtkFileChooserDialog .sidebar .scrollbar.slider,
+  NautilusWindow .sidebar .scrollbar.slider {
+    border-radius: 20px;
+    border: 3px solid transparent;
     background-color: rgba(209, 212, 216, 0.7); }
-    GtkFileChooserDialog .sidebar .scrollbar .slider:hover,
-    NautilusWindow .sidebar .scrollbar .slider:hover {
+    GtkFileChooserDialog .sidebar .scrollbar.slider:hover,
+    NautilusWindow .sidebar .scrollbar.slider:hover {
       background-color: #dfe1e4; }
-    GtkFileChooserDialog .sidebar .scrollbar .slider:prelight:active,
-    NautilusWindow .sidebar .scrollbar .slider:prelight:active {
+    GtkFileChooserDialog .sidebar .scrollbar.slider:prelight:active,
+    NautilusWindow .sidebar .scrollbar.slider:prelight:active {
       background-color: #5294E2; }
-    GtkFileChooserDialog .sidebar .scrollbar .slider:insensitive,
-    NautilusWindow .sidebar .scrollbar .slider:insensitive {
+    GtkFileChooserDialog .sidebar .scrollbar.slider.fine-tune,
+    NautilusWindow .sidebar .scrollbar.slider.fine-tune {
+      border-width: 4px; }
+      GtkFileChooserDialog .sidebar .scrollbar.slider.fine-tune:prelight:active,
+      NautilusWindow .sidebar .scrollbar.slider.fine-tune:prelight:active {
+        background-color: #5294E2; }
+    GtkFileChooserDialog .sidebar .scrollbar.slider:insensitive,
+    NautilusWindow .sidebar .scrollbar.slider:insensitive {
       background-color: transparent; }
 GtkFileChooserDialog.maximized .sidebar,
 NautilusWindow.maximized .sidebar {
@@ -3097,20 +3103,28 @@ GeditFileBrowserWidget {
   background-color: rgba(60, 64, 73, 0.95); }
   .maximized GeditFileBrowserWidget {
     background-color: #3c4049; }
-  GeditFileBrowserWidget .scrollbar.overlay-indicator:not(.dragging):not(.hovering) .slider {
-    background-color: #d1d4d8;
-    border: 1px solid rgba(0, 0, 0, 0.3); }
-  GeditFileBrowserWidget .scrollbar .trough {
-    background-color: rgba(0, 0, 0, 0.2);
-    border: none; }
-  GeditFileBrowserWidget .scrollbar .slider {
+  GeditFileBrowserWidget .scrollbar.trough {
+    background-color: transparent;
+    border-color: transparent; }
+  GeditFileBrowserWidget .scrollbar.slider {
+    border-radius: 20px;
+    border: 3px solid transparent;
     background-color: rgba(209, 212, 216, 0.7); }
-    GeditFileBrowserWidget .scrollbar .slider:hover {
+    GeditFileBrowserWidget .scrollbar.slider:hover {
       background-color: #dfe1e4; }
-    GeditFileBrowserWidget .scrollbar .slider:prelight:active {
+    GeditFileBrowserWidget .scrollbar.slider:prelight:active {
       background-color: #5294E2; }
-    GeditFileBrowserWidget .scrollbar .slider:insensitive {
+    GeditFileBrowserWidget .scrollbar.slider.fine-tune {
+      border-width: 4px; }
+      GeditFileBrowserWidget .scrollbar.slider.fine-tune:prelight:active {
+        background-color: #5294E2; }
+    GeditFileBrowserWidget .scrollbar.slider:insensitive {
       background-color: transparent; }
+  GeditFileBrowserWidget .scrollbars-junction, GeditFileBrowserWidget .scrollbar.trough,
+  GeditFileBrowserWidget .scrollbars-junction.frame,
+  GeditFileBrowserWidget .frame.scrollbar.trough {
+    border-color: transparent;
+    background-color: transparent; }
   GeditFileBrowserWidget .horizontal {
     background-color: transparent;
     border-color: rgba(44, 47, 53, 0.95); }
@@ -3185,7 +3199,7 @@ GtkFileChooserDialog .action-bar.frame {
 @define-color wm_title rgba(82, 93, 118, 0.8);
 @define-color wm_unfocused_title alpha(rgba(82, 93, 118, 0.8), 0.7);
 @define-color wm_bg #e7e8eb;
-@define-color wm_bg_unfocused #e7e8eb;
+@define-color wm_bg_unfocused #eff0f2;
 @define-color wm_highlight #f2f3f4;
 @define-color wm_shadow alpha(black, 0.35);
 @define-color content_view_bg #ffffff;
