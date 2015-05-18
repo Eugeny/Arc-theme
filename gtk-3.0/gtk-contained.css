@@ -3012,6 +3012,9 @@ NautilusWindow * {
 GtkFileChooserDialog.background,
 NautilusWindow.background {
   background-color: transparent; }
+GtkFileChooserDialog GtkBox.sidebar,
+NautilusWindow GtkBox.sidebar {
+  background-color: transparent; }
 GtkFileChooserDialog .sidebar,
 NautilusWindow .sidebar {
   background-color: rgba(60, 64, 73, 0.95); }
